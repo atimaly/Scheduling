@@ -63,6 +63,7 @@ void DPSchedule::RunDPAlgorithm(std::ostream &os) {
 		DP_[i][0] = 0;
 	}
 	
+	
 	FORO(i,(int)DP_.size()) {
 		FORO(j,(int)DP_[0].size()) {
 			//os << "i: " << i << " j: " << j << endl;
@@ -101,6 +102,7 @@ vector<int> DPSchedule::OptimalOrderForJobs(std::ostream &os) {
 		}
 	}
 	
+	std::reverse(all(can_jobs_order));
 	can_jobs_order.insert(can_jobs_order.end(), all(can_not_jobs));
 	return can_jobs_order;
 }
