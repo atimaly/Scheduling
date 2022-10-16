@@ -6,7 +6,7 @@
 using namespace std;
 
 
-DPSchedule::DPSchedule(std::istream &is) : optimal_value_{0}{
+DPSchedule::DPSchedule(std::istream &is) : optimal_value_{0} {
 	cout << "Give me the number of jobs!" << endl;
 	is >> n_;
 	jobs_.resize(n_);
