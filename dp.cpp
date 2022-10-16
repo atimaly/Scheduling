@@ -55,6 +55,9 @@ void DPSchedule::OrderJobs() {
 
 
 void DPSchedule::RunDPAlgorithm(std::ostream &os) {
+	if(!std::is_sorted(all(jobs_)))
+		OrderJobs();
+	
 	//intialize the weight=0 column to 0
 	FOR(i,(int)DP_.size()) {
 		DP_[i][0] = 0;
