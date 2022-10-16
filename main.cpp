@@ -9,19 +9,8 @@ using namespace std;
 int main() {
 	
 	DPSchedule Test;
-	cerr << "Read it" <<endl;
-	Test.PrintData();
-	cerr << "After Ordering " << endl;
 	Test.OrderJobs();
-	Test.PrintData();
-	
-	cerr << "After DP " << endl;
-	Test.RunDPAlgorithm();
-	Test.PrintData();
-	
-	vector<int> order_j = Test.OptimalOrderForJobs();
-	Print_vector(order_j);
-	
+	Test.RunDPAlgorithm();	
 	Test.PrintOptimalOrderValue();
 }
 
