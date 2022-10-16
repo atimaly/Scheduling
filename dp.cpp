@@ -63,8 +63,6 @@ void DPSchedule::RunDPAlgorithm(std::ostream &os) {
 		DP_[i][0] = 0;
 	}
 	
-	//int weight_sum = std::accumulate(all(jobs_), 0, [&](int s, Job c){return s+c.weight_;});
-	
 	FORO(i,(int)DP_.size()) {
 		FORO(j,(int)DP_[0].size()) {
 			//os << "i: " << i << " j: " << j << endl;
