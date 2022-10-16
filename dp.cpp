@@ -98,7 +98,6 @@ vector<int> DPSchedule::OptimalOrderForJobs(std::ostream &os) {
 		else{
 			can_not_jobs.push_back(i-1);
 			optimal_value_ += jobs_[i-1].weight_;
-			os << "Optimal Value Changing: " <<  optimal_value_ << endl;
 		}
 	}
 	
