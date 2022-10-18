@@ -27,9 +27,9 @@ class DPSchedule{
 	
 		DPSchedule(int n, vector<int> &dues, vector<int> &proc_t, vector<int> &w);
 		
-		void OrderJobs(); //Order Jobs according their due dates
-		
 		void PrintData(std::ostream &os = std::cerr);
+		
+		void OrderJobs(); //Order the Jobs according to their due dates
 		
 		void RunDPAlgorithm(std::ostream &os = std::cerr);
 		
