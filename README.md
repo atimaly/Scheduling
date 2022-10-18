@@ -8,4 +8,4 @@ Sample Input: \
 1 10 4 8 \
 Sample Output: \
 Optimal Order: 1 3 2 0  \
-Optimal Value: 12 \
+Optimal Value: 12
