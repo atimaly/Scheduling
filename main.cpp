@@ -6,12 +6,17 @@
 using namespace std;
 
 
-int main() {
-	
-	DPSchedule Test;
-	Test.OrderJobs();
-	Test.RunDPAlgorithm();	
-	Test.PrintOptimalOrderValue();
+int main(int argc, char** argv) {
+	FORO(i,argc) {
+		ifstream fin(argv[i]);
+		DPSchedule Test(fin);
+		Test.OrderJobs();
+		Test.RunDPAlgorithm();
+		string s = "out";
+		ofstream fout(s+std::to_string(i));	
+		Test.PrintOptimalOrderValue(fout);
+		fin.close(); fout.close();
+	}
 }
 
 
