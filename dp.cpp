@@ -108,7 +108,7 @@ vector<int> DPSchedule::OptimalOrderForJobs(std::ostream &os) {
 
 void DPSchedule::PrintOptimalOrderValue(std::ostream &os) {
 	optimal_value_ = 0;
-	os << "Optimal Order: "<< endl;
+	os << "Optimal Order: ";
 	Print_vector(OptimalOrderForJobs(), os);
 	os << "Optimal Value: " << optimal_value_ << endl;
 	
