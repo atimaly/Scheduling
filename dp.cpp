@@ -20,8 +20,7 @@ DPSchedule::DPSchedule(std::istream &is) : optimal_value_{0} {
 	FOR(i,n_) is >> jobs_[i].weight_;
 	
 	int weight_sum = std::accumulate(all(jobs_), 0, [&](int s, Job c){return s+c.weight_;});
-	DP_.resize(n_+1);
-	for(auto &v : DP_) v.resize(weight_sum+1, INF);	
+	DP_.resize(n_+1, vector<int>(weight_sum+1, INF));
 }
 
 DPSchedule::DPSchedule(int n, vector<int> &dues, vector<int> &proc_t, vector<int> &w) : n_{n}, optimal_value_{0} {
@@ -35,8 +34,7 @@ DPSchedule::DPSchedule(int n, vector<int> &dues, vector<int> &proc_t, vector<int
 	}
 	
 	int weight_sum = std::accumulate(all(jobs_), 0, [&](int s, Job c){return s+c.weight_;});
-	DP_.resize(n_+1);
-	for(auto &v : DP_) v.resize(weight_sum+1, INF);
+	DP_.resize(n_+1, vector<int>(weight_sum+1, INF));
 }
 
 void DPSchedule::PrintData(std::ostream &os) {
