@@ -10,6 +10,8 @@ DPSchedule::DPSchedule(std::istream &is) : optimal_value_{0} {
 	cout << "Give me the number of jobs!" << endl;
 	is >> n_;
 	jobs_.resize(n_);
+	FOR(i,n_) jobs_[i].id = i;
+	
 	cout << "Give me the due dates (positive int) for the jobs!" << endl;
 	FOR(i,n_) is >> jobs_[i].due_date_;
 	
@@ -90,11 +92,13 @@ vector<int> DPSchedule::OptimalOrderForJobs(std::ostream &os) {
 		//os << "i: " << i << " index_w: " << index_w << endl;
 		//os << "curr: " << DP_[i][index_w] << " lower: " << DP_[i-1][index_w] << endl;
 		if(DP_[i][index_w] != DP_[i-1][index_w]) {
-			can_jobs_order.push_back(i-1);
+			//can_jobs_order.push_back(i-1);
+			can_jobs_order.push_back(jobs_[i-1].id);
 			index_w -= jobs_[i-1].weight_;
 		}
 		else{
-			can_not_jobs.push_back(i-1);
+			//can_not_jobs.push_back(i-1);
+			can_not_jobs.push_back(jobs_[i-1].id);
 			optimal_value_ += jobs_[i-1].weight_;
 		}
 	}
