@@ -7,6 +7,7 @@ using namespace std;
 #define SCHEDULE_DP
 class DPSchedule{
 		struct Job{
+			int id;
 			int due_date_;
 			int processing_time_;
 			int weight_;
