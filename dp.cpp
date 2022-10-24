@@ -79,6 +79,7 @@ void DPSchedule::RunDPAlgorithm(std::ostream &os) {
 
 
 vector<int> DPSchedule::OptimalOrderForJobs(std::ostream &os) {
+	//Gives the optimal order of jobs with the due date ordered indexes
 	optimal_value_ = 0;
 	
 	vector<int> can_jobs_order;
@@ -92,13 +93,13 @@ vector<int> DPSchedule::OptimalOrderForJobs(std::ostream &os) {
 		//os << "i: " << i << " index_w: " << index_w << endl;
 		//os << "curr: " << DP_[i][index_w] << " lower: " << DP_[i-1][index_w] << endl;
 		if(DP_[i][index_w] != DP_[i-1][index_w]) {
-			//can_jobs_order.push_back(i-1);
-			can_jobs_order.push_back(jobs_[i-1].id);
+			can_jobs_order.push_back(i-1);
+			//can_jobs_order.push_back(jobs_[i-1].id);
 			index_w -= jobs_[i-1].weight_;
 		}
 		else{
-			//can_not_jobs.push_back(i-1);
-			can_not_jobs.push_back(jobs_[i-1].id);
+			can_not_jobs.push_back(i-1);
+			//can_not_jobs.push_back(jobs_[i-1].id);
 			optimal_value_ += jobs_[i-1].weight_;
 		}
 	}
@@ -110,8 +111,13 @@ vector<int> DPSchedule::OptimalOrderForJobs(std::ostream &os) {
 
 void DPSchedule::PrintOptimalOrderValue(std::ostream &os) {
 	optimal_value_ = 0;
-	os << "Optimal Order: ";
-	Print_vector(OptimalOrderForJobs(), os);
+	os << "Optimal Order:\n";
+	int starting_time = 0;
+	for(auto v: OptimalOrderForJobs()) {
+		os << "Starting Time For Job: " << jobs_[v].id << " is " << starting_time << endl;
+		starting_time += jobs_[v].processing_time_;
+	}
+	//Print_vector(OptimalOrderForJobs(), os);
 	os << "Optimal Value: " << optimal_value_ << endl;
 	
 }
